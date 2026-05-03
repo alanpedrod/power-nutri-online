@@ -314,7 +314,7 @@
     aspect-ratio: 9 / 4;  /* mobile — proporção da sua imagem menor */
   }
   .carousel-slide img {
-    object-fit: contain;  /* mostra a imagem inteira sem cortar */
+    object-fit: contain;  
     object-position: center;
   }
 
