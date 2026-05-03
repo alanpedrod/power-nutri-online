@@ -502,11 +502,11 @@ document.getElementById('form-checkout')?.addEventListener('submit', e => {
   const total = state.cart.reduce((s, i) => s + i.preco * i.qty, 0);
 
   const msg = encodeURIComponent(
-    `*Novo pedido — PowerNutri*\n\n` +
+    `🛒 *NOVO PEDIDO — POWERNUTRI*\n\n` +
     `👤 *Cliente:* ${nome}\n` +
     `📍 *Endereço:* ${endereco}\n` +
     `💰 *Pagamento:* ${pagamento}\n\n` +
-    `*PRODUTOS:*🛍\n${itens}\n\n` +
+    `*PRODUTOS:*🛍\n${itens}\n \n` +
     `*Total:* ${formatPrice(total)}\n\n` +
     (obs ? `*Obs:* ${obs}` : '')
   );
