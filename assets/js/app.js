@@ -423,7 +423,7 @@ document.getElementById('search-input')?.addEventListener('input', function () {
 // ========================
 // FINALIZAR COMPRA (WHATSAPP)
 // ========================
-const WHATSAPP_NUMBER = '5582999999999'; // ← Substitua pelo número real
+const WHATSAPP_NUMBER = '5581986953009'; // ← Substitua pelo número real
 
 // Limpa erro visual ao usuário corrigir o campo
 ['checkout-nome', 'checkout-endereco', 'checkout-pagamento'].forEach(id => {
