@@ -502,7 +502,7 @@ document.getElementById('form-checkout')?.addEventListener('submit', e => {
   const total = state.cart.reduce((s, i) => s + i.preco * i.qty, 0);
 
   const msg = encodeURIComponent(
-    `*Novo pedido — NutriMax*\n\n` +
+    `*Novo pedido — PowerNutri*\n\n` +
     `*Cliente:* ${nome}\n` +
     `*Endereço:* ${endereco}\n` +
     `*Pagamento:* ${pagamento}\n\n` +
