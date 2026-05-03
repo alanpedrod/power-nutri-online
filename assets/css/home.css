@@ -340,11 +340,6 @@
 
 }
 
-@media(max-width: 730px){
-  .benefits .none-mobile{
-    display: none;
-  }
-}
 
 @media (max-width: 360px) {
   .products-grid { grid-template-columns: 1fr; }
