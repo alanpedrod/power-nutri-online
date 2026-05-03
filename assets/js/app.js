@@ -503,10 +503,10 @@ document.getElementById('form-checkout')?.addEventListener('submit', e => {
 
   const msg = encodeURIComponent(
     `*Novo pedido — PowerNutri*\n\n` +
-    `*Cliente:* ${nome}\n` +
-    `*Endereço:* ${endereco}\n` +
-    `*Pagamento:* ${pagamento}\n\n` +
-    `*Itens:*\n${itens}\n\n` +
+    `👤 *Cliente:* ${nome}\n` +
+    `📍 *Endereço:* ${endereco}\n` +
+    `💰 *Pagamento:* ${pagamento}\n\n` +
+    `*PRODUTOS:*\n🛍${itens}\n\n` +
     `*Total:* ${formatPrice(total)}\n\n` +
     (obs ? `*Obs:* ${obs}` : '')
   );
