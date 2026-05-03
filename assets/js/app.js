@@ -496,19 +496,35 @@ document.getElementById('form-checkout')?.addEventListener('submit', e => {
   // ─────────────────────────────────────────────────────────
 
   const itens = state.cart.map(i =>
-  `• ${i.nome} x${i.qty} — ${formatPrice(i.preco * i.qty)}`
-).join('\n\n'); // 👈 mais espaço entre os itens
+  `┌───────────────────\n` +
+  `🛍 *${i.nome}*\n` +
+  `📦 Qtd: ${i.qty}\n` +
+  `💵 Subtotal: ${formatPrice(i.preco * i.qty)}\n` +
+  `└───────────────────`
+).join('\n\n');
 
 const total = state.cart.reduce((s, i) => s + i.preco * i.qty, 0);
 
 const msg = encodeURIComponent(
-  `🛒 *NOVO PEDIDO — POWERNUTRI*\n\n` +
-  `👤 *Cliente:* ${nome}\n` +
-  `📍 *Endereço:* ${endereco}\n` +
-  `💰 *Pagamento:* ${pagamento}\n\n` +
-  `*PRODUTOS:* 🛍\n\n${itens}\n\n` +
-  `*Total:* ${formatPrice(total)}\n\n` +
-  (obs ? `*Obs:* ${obs}` : '')
+  `🛒 *NOVO PEDIDO — POWERNUTRI*\n` +
+  `═══════════════════\n\n` +
+
+  `👤 *Cliente:*\n${nome}\n\n` +
+  `📍 *Endereço:*\n${endereco}\n\n` +
+  `💰 *Pagamento:*\n${pagamento}\n\n` +
+
+  `🛍 *PRODUTOS*\n` +
+  `═══════════════════\n\n` +
+  `${itens}\n\n` +
+
+  `═══════════════════\n` +
+  `💰 *TOTAL DO PEDIDO*\n` +
+  `👉 *${formatPrice(total)}*\n` +
+  `═══════════════════\n\n` +
+
+  (obs ? `📝 *Observação:*\n${obs}\n\n` : '') +
+
+  `🙏 Obrigado pela preferência!`
 );
 
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
