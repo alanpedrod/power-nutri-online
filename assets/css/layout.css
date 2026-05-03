@@ -361,11 +361,11 @@ body { padding-top: 116px; }
   height: 36px;
   border-radius: 50%;
   background: rgba(255,255,255,0.07);
+  background-color: var(--color-dark);
   display: flex;
   align-items: center;
   justify-content: center;
-  /* color: var(--color-gray); */
-  color: var(--color-accent);
+  color: var(--color-white);
   transition: background var(--transition), color var(--transition);
 }
 
@@ -390,7 +390,7 @@ body { padding-top: 116px; }
 
 .footer-col ul li a {
   font-size: 0.85rem;
-  color: var(--color-gray);
+  color: var(--color-gray-light);
   transition: color var(--transition);
 }
 
