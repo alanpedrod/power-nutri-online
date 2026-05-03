@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PowerNutri 04 — Suplementos de Alta Performance</title>
+  <meta name="description"
+    content="Suplementos originais e de alta performance. Whey Protein, Creatina, Pré-treino e muito mais.">
+  <!-- Fonte awsome icone whatsap  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+</head>
+
+<body>
+
+  <!-- ======================== -->
+  <!-- HEADER                  -->
+  <!-- ======================== -->
+  <header id="header">
+    <div class="header-top">
+      <!-- Logo -->
+      <a href="./index.html" class="header-logo">
+        <img src="assets/imagens/icone-musculacao.svg" class="logo-icon" alt="Logo PowerNutri">
+        <div>
+          <span class="logo-text">Power<strong>Nutri</strong></span>
+          <span class="logo-sub">Suplementos</span>
+        </div>
+      </a>
+
+      <!-- Busca -->
+      <div class="header-search">
+        <input type="search" id="search-input" placeholder="Encontre o suplemento ideal para você" autocomplete="off">
+        <button class="btn-search" aria-label="Buscar">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2.5">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Ações -->
+      <div class="header-actions">
+        <!-- Carrinho -->
+        <button class="btn-cart" id="btn-cart" aria-label="Abrir carrinho">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="9" cy="21" r="1" />
+            <circle cx="20" cy="21" r="1" />
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+          </svg>
+          <span class="cart-count" style="display:none">0</span>
+        </button>
+        <!-- Hambúrguer mobile -->
+        <button class="btn-hamburger" id="btn-hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navbar categorias -->
+    <div id="navbar">
+      <div class="navbar-inner">
+        <nav aria-label="Categorias">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a class="nav-link active" href="#produtos" data-category="Todos">Todos</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#produtos" data-category="Whey Protein">Whey Protein</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#produtos" data-category="Creatina">Creatina</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#produtos" data-category="Pré-treino">Pré-treino</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#produtos" data-category="Vitaminas">Vitaminas</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#produtos" data-category="Barras">Barras</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#produtos" data-category="Kits">Kits</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile overlay e painel -->
+  <div class="nav-mobile-overlay" id="mobile-overlay"></div>
+  <div class="nav-mobile-panel" id="mobile-panel">
+    <div class="nav-mobile-header">
+      <span class="logo-text" style="font-size:1.4rem">PowerNutri</span>
+      <button class="nav-mobile-close" id="mobile-close" aria-label="Fechar menu">×</button>
+    </div>
+    <ul class="nav-mobile-list">
+      <li><a href="#produtos">Todos os Produtos</a></li>
+      <li><a href="#produtos">Whey Protein</a></li>
+      <li><a href="#produtos">Creatina</a></li>
+      <li><a href="#produtos">Pré-treino</a></li>
+      <li><a href="#produtos">Vitaminas</a></li>
+      <li><a href="#produtos">Barras</a></li>
+      <li><a href="#produtos">Ofertas</a></li>
+    </ul>
+  </div>
+
+  <!-- ======================== -->
+  <!-- HERO / CARROSSEL         -->
+  <!-- ======================== -->
+  <section class="hero" aria-label="Banners promocionais" id="beneficios">
+    <div class="carousel" id="carousel-track">
+      <!-- Slides renderizados pelo JS -->
+      <div class="carousel-placeholder">
+        <div class="spinner"></div>
+        <p>Carregando promoções...</p>
+      </div>
+    </div>
+
+    <button class="carousel-btn carousel-prev" id="carousel-prev" aria-label="Anterior">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+    </button>
+    <button class="carousel-btn carousel-next" id="carousel-next" aria-label="Próximo">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
+    </button>
+
+    <div class="carousel-dots" id="carousel-dots"></div>
+  </section>
+
+  <!-- ======================== -->
+  <!-- BENEFÍCIOS               -->
+  <!-- ======================== -->
+  <section class="benefits" aria-label="Diferenciais">
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <rect x="1" y="3" width="15" height="13" rx="1" />
+            <path d="M16 8h4l3 5v3h-7V8z" />
+            <circle cx="5.5" cy="18.5" r="2.5" />
+            <circle cx="18.5" cy="18.5" r="2.5" />
+          </svg>
+        </div>
+        <div class="benefit-text">
+          <strong>Frete Grátis</strong>
+          <span>Compras acima de R$200</span>
+        </div>
+      </div>
+
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
+        </div>
+        <div class="benefit-text">
+          <strong>Site Seguro</strong>
+          <span>SSL e pagamento protegido</span>
+        </div>
+      </div>
+
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+        </div>
+        <div class="benefit-text">
+          <strong>100% Original</strong>
+          <span>Produto autêntico e garantido</span>
+        </div>
+      </div>
+
+      <div class="benefit-item">
+        <div class="benefit-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+        </div>
+        <div class="benefit-text">
+          <strong>Atendimento Rápido</strong>
+          <span>Suporte via WhatsApp</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== -->
+  <!-- PRODUTOS                 -->
+  <!-- ======================== -->
+  <main id="produtos">
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Nossos Produtos</h2>
+          <a href="#produtos" class="section-link">
+            Ver todos
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Filtros -->
+        <div class="category-filters" id="category-filters" role="group" aria-label="Filtrar por categoria"></div>
+
+        <!-- Grid -->
+        <div class="products-grid" id="products-grid">
+          <div class="products-loading">
+            <div class="spinner"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================== -->
+  <!-- RODAPÉ                   -->
+  <!-- ======================== -->
+  <footer id="footer">
+    <div class="footer-grid">
+      <!-- Marca -->
+      <div class="footer-brand">
+        <a href="index.html" class="header-logo">
+          <div>
+            <span class="logo-text">PowerNutri</span>
+            <span class="logo-sub">Suplementos</span>
+          </div>
+        </a>
+        <p>Suplementos de alta performance para quem não aceita o limite. Produtos 100% originais com entrega rápida.
+        </p>
+        <div class="footer-social">
+          <!-- Instagram -->
+          <a href="#" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="#" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            </svg>
+          </a>
+          <!-- WhatsApp -->
+          <a href="https://wa.me/5581986953009" aria-label="WhatsApp" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div class="footer-col">
+        <h4>Links Úteis</h4>
+        <ul>
+          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#produtos">Ofertas</a></li>
+          <li><a href="#produtos">Lançamentos</a></li>
+          <li><a href="#beneficios">Benefícios</a></li>
+        </ul>
+      </div>
+
+      <!-- Contato -->
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5581986953009">WhatsApp</a></li>
+          <li><a href="mailto:contato@powernutri.com.br">E-mail</a></li>
+          <li><a href="#">Prazo de entrega</a></li>
+          <li><a href="#">Trocas e devoluções</a></li>
+        </ul>
+      </div>
+
+      <!-- Info -->
+      <div class="footer-col">
+        <h4>Informações</h4>
+        <ul>
+          <li><a href="#">Política de privacidade</a></li>
+          <li><a href="#">Termos de uso</a></li>
+          <li><a href="#">Formas de pagamento</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 PowerNutri Suplementos. Todos os direitos reservados.</p>
+      <a href="./assets/pages/login.html" class="footer-admin-link">Área administrativa</a>
+    </div>
+  </footer>
+
+  <!-- ======================== -->
+  <!-- CARRINHO LATERAL         -->
+  <!-- ======================== -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+
+  <aside class="cart-sidebar" id="cart-sidebar" aria-label="Carrinho de compras">
+    <div class="cart-header">
+      <h3>Meu Carrinho</h3>
+      <button class="modal-close" id="cart-close" aria-label="Fechar carrinho">×</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-value" id="cart-total-value">R$ 0,00</span>
+      </div>
+      <button class="btn btn-secondary btn-full" id="btn-checkout">
+        Finalizar pelo WhatsApp
+      </button>
+    </div>
+  </aside>
+
+  <!-- ======================== -->
+  <!-- MODAL — PRODUTO          -->
+  <!-- ======================== -->
+  <div class="modal-overlay" id="modal-product" role="dialog" aria-modal="true" aria-labelledby="modal-product-name">
+    <div class="modal modal-product">
+      <div class="modal-header">
+        <span id="modal-product-category" class="product-category"></span>
+        <button class="modal-close" id="modal-product-close" aria-label="Fechar">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-product-img">
+          <img src="" alt="">
+        </div>
+        <div class="modal-product-info">
+          <h3 id="modal-product-name"></h3>
+          <p class="modal-product-desc" id="modal-product-desc"></p>
+          <div class="modal-product-price" id="modal-product-price"></div>
+          <button class="btn btn-secondary btn-full btn-lg" id="btn-modal-add-cart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+            </svg>
+            Adicionar ao carrinho
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== -->
+  <!-- MODAL — FINALIZAR COMPRA -->
+  <!-- ======================== -->
+  <div class="modal-overlay" id="modal-checkout" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Finalizar Pedido</h3>
+        <button class="modal-close" id="modal-checkout-close" aria-label="Fechar">×</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-checkout" novalidate>
+          <div style="display:flex;flex-direction:column;gap:var(--space-md)">
+            <div class="form-group">
+              <label class="form-label" for="checkout-nome">Seu nome *</label>
+              <input class="form-input" type="text" id="checkout-nome" name="nome" placeholder="Nome completo" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="checkout-endereco">Endereço de entrega *</label>
+              <input class="form-input" type="text" id="checkout-endereco" name="endereco"
+                placeholder="Rua, número, bairro, cidade" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="checkout-pagamento">Forma de pagamento *</label>
+              <select class="form-select" id="checkout-pagamento" name="pagamento" required>
+                <option value="">Selecione...</option>
+                <option value="PIX">PIX</option>
+                <option value="Cartão de crédito">Cartão de crédito</option>
+                <option value="Cartão de débito">Cartão de débito</option>
+                <option value="Boleto">Boleto bancário</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="checkout-obs">Observações</label>
+              <textarea class="form-textarea" id="checkout-obs" name="obs"
+                placeholder="Complemento de endereço, preferências..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-secondary btn-full btn-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+              Enviar pedido pelo WhatsApp
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== -->
+  <!-- WHATSAPP FLOAT           -->
+  <!-- ======================== -->
+  <a href="https://wa.me/5581986953009" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+      <path
+        d="M12 0C5.373 0 0 5.373 0 12c0 2.117.553 4.1 1.522 5.823L.057 23.743a.5.5 0 0 0 .618.627l6.086-1.463A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.862 0-3.61-.5-5.115-1.374l-.363-.216-3.745.9.916-3.65-.236-.375A9.957 9.957 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+    </svg>
+  </a>
+
+  <!-- Toast container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- JS -->
+  <script type="module" src="./assets/js/firebase-config.js"></script>
+  <script type="module" src="assets/js/app.js"></script>
+
+</body>
+
+</html>

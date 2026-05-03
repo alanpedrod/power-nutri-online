@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — PowerNutri</title>
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/layout.css">
+</head>
+
+<body class="admin-page">
+
+  <!-- ======================== -->
+  <!-- TOPBAR                  -->
+  <!-- ======================== -->
+  <header class="admin-topbar">
+    <div class="admin-topbar-brand">
+      <a href="/index.html" style="display:flex;align-items:center;gap:8px;text-decoration:none">
+        <span class="logo-text">PowerNutri</span>
+      </a>
+      <span class="admin-badge">Admin</span>
+    </div>
+    <div class="admin-topbar-actions">
+      <span class="admin-user" id="admin-user-email"></span>
+      <button class="btn btn-outline btn-sm" id="btn-logout">Sair</button>
+    </div>
+  </header>
+
+  <!-- ======================== -->
+  <!-- CONTEÚDO                 -->
+  <!-- ======================== -->
+  <div class="admin-container">
+
+    <!-- Stats -->
+    <div class="admin-stats">
+      <div class="stat-card stat-card-accent">
+        <span class="stat-card-label">Total de produtos</span>
+        <span class="stat-card-value" id="stat-total">—</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card-label">No banner</span>
+        <span class="stat-card-value" id="stat-banner">—</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card-label">Categorias</span>
+        <span class="stat-card-value" id="stat-cats">—</span>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="admin-tabs" role="tablist">
+      <button class="admin-tab active" data-panel="panel-list" role="tab">Listar produtos</button>
+      <button class="admin-tab" data-panel="panel-form" role="tab">Adicionar / Editar</button>
+      <button class="admin-tab" data-panel="panel-banners" role="tab">Banners</button>
+    </div>
+
+    <!-- Mensagem de feedback -->
+    <div id="admin-msg" class="login-error" style="margin-bottom:var(--space-md)"></div>
+
+    <!-- ======================== -->
+    <!-- PAINEL: LISTA            -->
+    <!-- ======================== -->
+    <div id="panel-list" class="admin-panel">
+      <div class="admin-form-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-md)">
+          <h2 class="admin-form-title" style="margin:0;border:none">Produtos cadastrados</h2>
+          <button class="btn btn-primary btn-sm" onclick="document.querySelector('[data-panel=panel-form]').click()">
+            + Novo produto
+          </button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Imagem</th>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+                <th>Badge</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="products-tbody">
+              <tr>
+                <td colspan="6" style="text-align:center;padding:32px">
+                  <div class="spinner"></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <!-- PAINEL: FORMULÁRIO       -->
+    <!-- ======================== -->
+    <div id="panel-form" class="admin-panel" style="display:none">
+      <div class="admin-form-card">
+        <h2 class="admin-form-title" id="form-title">Adicionar produto</h2>
+
+        <form id="product-form" novalidate>
+          <div class="form-grid-2">
+
+            <!-- Nome -->
+            <div class="form-group form-col-full">
+              <label class="form-label" for="f-nome">Nome do produto *</label>
+              <input class="form-input" type="text" id="f-nome" name="nome"
+                placeholder="Ex: Whey Protein Concentrado 2kg" required>
+            </div>
+
+            <!-- Categoria -->
+            <div class="form-group">
+              <label class="form-label" for="f-categoria">Categoria *</label>
+              <select class="form-select" id="f-categoria" name="categoria" required>
+                <option value="">Selecione...</option>
+                <option value="Whey Protein">Whey Protein</option>
+                <option value="Creatina">Creatina</option>
+                <option value="Pré-treino">Pré-treino</option>
+                <option value="Vitaminas">Vitaminas</option>
+                <option value="Barras">Barras</option>
+                <option value="Kits">Kits</option>
+                <option value="Outros">Outros</option>
+              </select>
+            </div>
+
+            <!-- Preço -->
+            <div class="form-group">
+              <label class="form-label" for="f-preco">Preço (R$) *</label>
+              <input class="form-input" type="number" id="f-preco" name="preco" placeholder="0.00" step="0.01" min="0"
+                required>
+            </div>
+
+            <!-- Badge -->
+            <div class="form-group">
+              <label class="form-label" for="f-badge">Badge</label>
+              <select class="form-select" id="f-badge" name="badge">
+                <option value="">Nenhum</option>
+                <option value="Novo">Novo</option>
+                <option value="Promoção">Promoção</option>
+                <option value="Destaque">Destaque</option>
+                <option value="Popular">Popular</option>
+              </select>
+            </div>
+
+            <!-- Preço antigo (aparece apenas quando badge = Promoção) -->
+            <div class="form-group form-col-full" id="group-preco-antigo" style="display:none">
+              <label class="form-label" for="f-precoAntigo">Preço antigo (R$)</label>
+              <input class="form-input" type="number" id="f-precoAntigo" name="precoAntigo" placeholder="0.00"
+                step="0.01" min="0">
+            </div>
+
+            <!-- Descrição -->
+            <div class="form-group form-col-full">
+              <label class="form-label" for="f-descricao">Descrição</label>
+              <textarea class="form-textarea" id="f-descricao" name="descricao"
+                placeholder="Descreva o produto, seus benefícios e modo de uso..." style="min-height:110px"></textarea>
+            </div>
+
+            <!-- Upload de imagem -->
+            <div class="form-group form-col-full">
+              <label class="form-label">Imagem do produto</label>
+              <div class="img-upload-area" id="img-upload-area">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  stroke-width="1.5">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="17 8 12 3 7 8" />
+                  <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                <p>Clique ou arraste uma imagem aqui</p>
+                <span>PNG, JPG ou WEBP — máx. 5 MB</span>
+              </div>
+              <input type="file" id="img-input" accept="image/*" style="display:none">
+              <div id="img-preview"></div>
+            </div>
+
+            <!-- URL manual (fallback) -->
+            <div class="form-group form-col-full">
+              <label class="form-label" for="f-imagemUrl">Ou cole a URL da imagem</label>
+              <input class="form-input" type="url" id="f-imagemUrl" name="imagemUrl" placeholder="https://...">
+            </div>
+
+            <!-- Exibir no banner -->
+            <div class="form-group form-col-full">
+              <label class="form-check">
+                <input type="checkbox" id="f-exibirNoBanner" name="exibirNoBanner">
+                Exibir este produto no banner principal (carrossel)
+              </label>
+            </div>
+
+            <!-- Botões -->
+            <div class="form-col-full" style="display:flex;gap:var(--space-sm)">
+              <button type="submit" class="btn btn-primary btn-lg">Salvar produto</button>
+              <button type="button" class="btn btn-outline" id="btn-cancel-edit" style="display:none">Cancelar
+                edição</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Novo Bloco(Novo painel referente a hero) -->
+    <!-- ======================== -->
+    <!-- PAINEL: BANNERS          -->
+    <!-- ======================== -->
+    <div id="panel-banners" class="admin-panel" style="display:none">
+      <div class="admin-form-card">
+
+        <h2 class="admin-form-title" id="banner-form-title">Adicionar banner</h2>
+
+        <form id="banner-form">
+
+          <div class="form-grid-2">
+
+            <!-- Título -->
+            <div class="form-group form-col-full">
+              <label class="form-label">Título</label>
+              <input class="form-input" id="banner-titulo" placeholder="Ex: Promoção de Creatina">
+            </div>
+
+            <!-- Categoria -->
+            <div class="form-group">
+              <label class="form-label">Categoria</label>
+              <select class="form-select" id="banner-categoria">
+                <option value="">Selecione...</option>
+                <option value="Whey Protein">Whey Protein</option>
+                <option value="Creatina">Creatina</option>
+                <option value="Pré-treino">Pré-treino</option>
+                <option value="Vitaminas">Vitaminas</option>
+                <option value="Barras">Barras</option>
+                <option value="Kits">Kits</option>
+                <option value="Outros">Outros</option>
+              </select>
+            </div>
+
+            <!-- Ordem -->
+            <div class="form-group">
+              <label class="form-label">Ordem</label>
+              <input type="number" class="form-input" id="banner-ordem" placeholder="0">
+            </div>
+
+            <!-- Ativo -->
+            <div class="form-group form-col-full">
+              <label class="form-check">
+                <input type="checkbox" id="banner-ativo" checked>
+                Banner ativo
+              </label>
+            </div>
+
+            <!-- Upload -->
+            <div class="form-group form-col-full">
+              <label class="form-label">Imagem do banner</label>
+
+              <div class="img-upload-area" id="banner-upload-area">
+                <p>Clique ou arraste uma imagem</p>
+              </div>
+
+              <input type="file" id="banner-img-input" accept="image/*" style="display:none">
+
+              <div id="banner-img-preview"></div>
+            </div>
+
+            <!-- URL -->
+            <div class="form-group form-col-full">
+              <label class="form-label">Ou URL da imagem</label>
+              <input class="form-input" id="banner-imagemUrl" placeholder="https://...">
+            </div>
+            <!-- Novo bloco para banner em mobile  -->
+            <div class="form-group form-col-full">
+              <label class="form-label">Imagem MOBILE do banner</label>
+              <input class="form-input" type="url" id="banner-imagemMobile" placeholder="https://...">
+            </div>
+            <!-- para fazer upload de imagens mobile  -->
+            <div class="form-group form-col-full">
+              <label class="form-label">Upload da imagem MOBILE</label>
+
+              <div class="img-upload-area" id="banner-upload-area-mobile">
+                <p>Clique ou arraste uma imagem aqui</p>
+                <span>PNG, JPG ou WEBP</span>
+              </div>
+
+              <input type="file" id="banner-img-input-mobile" accept="image/*" style="display:none">
+              <div id="banner-img-preview-mobile"></div>
+            </div>
+
+            <!-- Botões -->
+            <div class="form-col-full" style="display:flex;gap:var(--space-sm)">
+              <button type="submit" class="btn btn-primary">Salvar banner</button>
+              <button type="button" id="btn-cancel-banner" class="btn btn-outline" style="display:none">
+                Cancelar
+              </button>
+            </div>
+
+          </div>
+
+        </form>
+
+        <!-- Tabela -->
+        <div class="admin-table-wrap" style="margin-top:32px">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Imagem</th>
+                <th>Título</th>
+                <th>Categoria</th>
+                <th>Ordem</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="banners-tbody"></tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- WhatsApp float -->
+  <a href="https://wa.me/5582999999999" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+      <path
+        d="M12 0C5.373 0 0 5.373 0 12c0 2.117.553 4.1 1.522 5.823L.057 23.743a.5.5 0 0 0 .618.627l6.086-1.463A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.862 0-3.61-.5-5.115-1.374l-.363-.216-3.745.9.916-3.65-.236-.375A9.957 9.957 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+    </svg>
+  </a>
+
+  <script>
+    document.getElementById('f-badge')?.addEventListener('change', function () {
+      const group = document.getElementById('group-preco-antigo');
+      group.style.display = this.value === 'Promoção' ? 'flex' : 'none';
+      if (this.value !== 'Promoção') {
+        document.getElementById('f-precoAntigo').value = '';
+      }
+    });
+  </script>
+
+  <script type="module" src="../js/admin.js"></script>
+</body>
+
+</html>
