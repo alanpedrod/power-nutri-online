@@ -506,7 +506,7 @@ document.getElementById('form-checkout')?.addEventListener('submit', e => {
     `👤 *Cliente:* ${nome}\n` +
     `📍 *Endereço:* ${endereco}\n` +
     `💰 *Pagamento:* ${pagamento}\n\n` +
-    `*PRODUTOS:*\n🛍${itens}\n\n` +
+    `*PRODUTOS:*\n${itens}\n🛍\n` +
     `*Total:* ${formatPrice(total)}\n\n` +
     (obs ? `*Obs:* ${obs}` : '')
   );
