@@ -327,11 +327,11 @@
 
   .carousel-slide-price { font-size: 1.4rem; }
 
-  .benefits { padding: var(--space-md) 0; }
+  .benefits { padding: var(--space-xs) 0; }
 
   .benefits-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-sm); }
 
-  .benefit-item { flex-direction: column; text-align: center; padding: var(--space-sm) var(--space-xs); }
+  .benefit-item { flex-direction: column; text-align: center; padding: var(--space-sm) var(--space-xs); gap: var(--space-xs);}
 
   .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
 
