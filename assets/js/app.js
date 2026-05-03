@@ -501,7 +501,7 @@ document.getElementById('form-checkout')?.addEventListener('submit', e => {
   `📦 Qtd: ${i.qty}\n` +
   `💵 Subtotal: ${formatPrice(i.preco * i.qty)}\n` +
   `└───────────────────`
-).join('\n\n');
+).join('\n');
 
 const total = state.cart.reduce((s, i) => s + i.preco * i.qty, 0);
 
