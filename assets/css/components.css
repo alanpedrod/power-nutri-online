@@ -285,7 +285,7 @@
 
 .modal-close {
   color: var(--color-gray);
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   line-height: 1;
   transition: color var(--transition);
 }
@@ -437,14 +437,14 @@
 .qty-num { font-size: 0.85rem; font-weight: 600; min-width: 20px; text-align: center; }
 
 .cart-item-remove {
-  color: var(--color-gray);
+  color: var(--color-gray-light);
   transition: color var(--transition);
   align-self: flex-start;
 }
 
 .cart-item-remove:hover { color: var(--color-danger); }
 
-.cart-item-remove svg { width: 16px; height: 16px; }
+.cart-item-remove svg { width: 20px; height: 20px; }
 
 .cart-footer {
   border-top: 1px solid rgba(255,255,255,0.08);

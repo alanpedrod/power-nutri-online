@@ -255,3 +255,15 @@
   .admin-tabs { flex-wrap: wrap; }
   .admin-container { padding: var(--space-md); }
 }
+
+/* Para deixar algumas colunas invisíveis em telas mobile  */
+@media (max-width: 768px) {
+  .admin-table th:nth-child(3),
+  .admin-table td:nth-child(3),
+  .admin-table th:nth-child(4),
+  .admin-table td:nth-child(4),
+  .admin-table th:nth-child(5),
+  .admin-table td:nth-child(5) {
+    display: none;
+  }
+}

@@ -364,7 +364,8 @@ body { padding-top: 116px; }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-gray);
+  /* color: var(--color-gray); */
+  color: var(--color-accent);
   transition: background var(--transition), color var(--transition);
 }
 
