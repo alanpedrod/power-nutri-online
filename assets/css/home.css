@@ -311,7 +311,7 @@
 @media (max-width: 767px) {
   /* .hero { height: 280px; } */
   .hero {
-    aspect-ratio: 9 / 4;  /* mobile — proporção da sua imagem menor */
+    aspect-ratio: 9 / 4;
   }
   .carousel-slide img {
     object-fit: contain;  
