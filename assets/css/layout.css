@@ -415,6 +415,7 @@ body { padding-top: 116px; }
 .footer-admin-link {
   font-size: 0.8rem;
   color: var(--color-gray);
+  color: var(--color-gray-light);
   opacity: 0.6;
   transition: opacity var(--transition);
 }

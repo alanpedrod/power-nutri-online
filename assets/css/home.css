@@ -337,16 +337,13 @@
 
   .carousel-btn { display: none; }
 
-  
-  /* .hero {
-    height: 320px;
-  } */
 
-  /* .carousel-slide img {
-    object-fit: contain;
-    object-position: center;
-  } */
+}
 
+@media(max-width: 730px){
+  .benefits .none-mobile{
+    display: none;
+  }
 }
 
 @media (max-width: 360px) {
