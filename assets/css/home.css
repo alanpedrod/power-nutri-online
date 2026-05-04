@@ -319,8 +319,6 @@
     max-height: 700px; /* evita ficar gigante */
 
     /* opcional: melhora experiência */
-    display: flex;
-    align-items: center;
   }
    .carousel-slide img {
     object-position: center;
