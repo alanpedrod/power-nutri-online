@@ -564,6 +564,38 @@ function closeMobileMenu() {
   document.getElementById('btn-hamburger')?.classList.remove('open');
 }
 
+// Links do menu mobile — filtrar categoria e fechar painel
+document.querySelectorAll('.nav-mobile-list a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+
+    const category = link.dataset.category;
+    if (!category) return;
+
+    // Filtrar produtos
+    if (category === 'Todos') {
+      renderProducts(state.products);
+    } else {
+      const filtered = state.products.filter(p => p.categoria === category);
+      renderProducts(filtered);
+    }
+
+    // Atualizar botões de filtro
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.cat === category);
+    });
+
+    // Fechar menu
+    closeMobileMenu();
+
+    // Scroll até os produtos
+    const section = document.getElementById('produtos');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
 
 // ========================
 // INICIALIZAÇÃO
