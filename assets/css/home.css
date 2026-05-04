@@ -308,18 +308,27 @@
   /* .hero { height: 380px; } */
 }
 
-@media (max-width: 767px) {
-  /* .hero {
-    aspect-ratio: 9 / 4;
-  } */
+
+@media (max-width: 768px) {
   .hero {
-    aspect-ratio: 16 / 9; /* OU 4 / 3 se quiser mais altura */
-    max-height: none;
+    aspect-ratio: auto; /* remove proporção travada */
+
+    height: 75vh; /* ocupa boa parte da tela sem exagerar */
+
+    min-height: 420px; /* evita ficar pequeno demais */
+    max-height: 700px; /* evita ficar gigante */
+
+    /* opcional: melhora experiência */
+    display: flex;
+    align-items: center;
   }
-  .carousel-slide img {
-    object-fit: contain;  
+   .carousel-slide img {
     object-position: center;
   }
+}
+
+@media (max-width: 767px) {
+
 
   .carousel-slide-overlay { padding: 0 var(--space-lg); }
 
