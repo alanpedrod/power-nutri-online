@@ -181,7 +181,8 @@
 
 .product-price-old {
   font-size: 0.8rem;
-  color: var(--color-gray);
+  /* color: var(--color-gray); */
+  color: var(--color-danger);
   text-decoration: line-through;
 }
 
