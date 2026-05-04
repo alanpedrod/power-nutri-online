@@ -311,18 +311,17 @@
 
 @media (max-width: 768px) {
   .hero {
-    aspect-ratio: auto; /* remove proporção travada */
+    /* aspect-ratio: auto;  */
+    /* height: 75vh; */
 
-    height: 75vh; /* ocupa boa parte da tela sem exagerar */
+    width: 100%;
+    aspect-ratio: 1 / 1;
 
-    min-height: 420px; /* evita ficar pequeno demais */
-    max-height: 700px; /* evita ficar gigante */
-
-    /* opcional: melhora experiência */
   }
    .carousel-slide img {
     object-position: center;
   }
+  
 }
 
 @media (max-width: 767px) {
