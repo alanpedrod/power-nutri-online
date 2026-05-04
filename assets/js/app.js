@@ -56,10 +56,11 @@ function initCarousel(bannerProducts) {
 
   if (!bannerProducts.length) {
     track.innerHTML = `
-      <div class="carousel-placeholder">
-        <div class="spinner"></div>
-        <p>Nenhum banner configurado ainda.</p>
-      </div>`;
+    <div class="carousel-placeholder">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>`;
     return;
   }
 
@@ -496,36 +497,36 @@ document.getElementById('form-checkout')?.addEventListener('submit', e => {
   // ─────────────────────────────────────────────────────────
 
   const itens = state.cart.map(i =>
-  `┌───────────────────\n` +
-  `🛍 *${i.nome}*\n` +
-  `📦 Qtd: ${i.qty}\n` +
-  `💵 Subtotal: ${formatPrice(i.preco * i.qty)}\n` +
-  `└───────────────────`
-).join('\n');
+    `┌───────────────────\n` +
+    `🛍 *${i.nome}*\n` +
+    `📦 Qtd: ${i.qty}\n` +
+    `💵 Subtotal: ${formatPrice(i.preco * i.qty)}\n` +
+    `└───────────────────`
+  ).join('\n');
 
-const total = state.cart.reduce((s, i) => s + i.preco * i.qty, 0);
+  const total = state.cart.reduce((s, i) => s + i.preco * i.qty, 0);
 
-const msg = encodeURIComponent(
-  `🛒 *NOVO PEDIDO — POWERNUTRI*\n` +
-  `═══════════════════\n\n` +
+  const msg = encodeURIComponent(
+    `🛒 *NOVO PEDIDO — POWERNUTRI*\n` +
+    `═══════════════════\n\n` +
 
-  `👤 *Cliente:*\n${nome}\n\n` +
-  `📍 *Endereço:*\n${endereco}\n\n` +
-  `💰 *Pagamento:*\n${pagamento}\n\n` +
+    `👤 *Cliente:*\n${nome}\n\n` +
+    `📍 *Endereço:*\n${endereco}\n\n` +
+    `💰 *Pagamento:*\n${pagamento}\n\n` +
 
-  `🛍 *PRODUTOS*\n` +
-  `═══════════════════\n\n` +
-  `${itens}\n\n` +
+    `🛍 *PRODUTOS*\n` +
+    `═══════════════════\n\n` +
+    `${itens}\n\n` +
 
-  `═══════════════════\n` +
-  `💰 *TOTAL DO PEDIDO*\n` +
-  `👉 *${formatPrice(total)}*\n` +
-  `═══════════════════\n\n` +
+    `═══════════════════\n` +
+    `💰 *TOTAL DO PEDIDO*\n` +
+    `👉 *${formatPrice(total)}*\n` +
+    `═══════════════════\n\n` +
 
-  (obs ? `📝 *Observação:*\n${obs}\n\n` : '') +
+    (obs ? `📝 *Observação:*\n${obs}\n\n` : '') +
 
-  `🙏 Obrigado pela preferência!`
-);
+    `🙏 Obrigado pela preferência!`
+  );
 
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
   state.cart = [];
@@ -587,7 +588,13 @@ async function init() {
   const products = await fetchProducts();
 
   // Banner (novo sistema)
+  // 👇 mostra skeleton imediatamente
+  initCarousel([]);
+
+  // 👇 busca os dados
   const banners = await fetchBanners();
+
+  // 👇 renderiza de verdade
   initCarousel(banners);
 
   // Grid
