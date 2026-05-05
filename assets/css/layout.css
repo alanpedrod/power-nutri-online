@@ -346,7 +346,8 @@ body { padding-top: 116px; }
   margin-top: var(--space-sm);
   font-size: 0.85rem;
   line-height: 1.7;
-  color: var(--color-gray);
+  /* color: var(--color-gray); */
+  color: #0090CC;
   max-width: 260px;
 }
 
@@ -359,19 +360,26 @@ body { padding-top: 116px; }
 .footer-social a {
   width: 36px;
   height: 36px;
+  border: 1px solid #1F2937;
   border-radius: 50%;
-  background: rgba(255,255,255,0.07);
-  background-color: var(--color-dark);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-white);
   transition: background var(--transition), color var(--transition);
+}
+.footer-social .instagram{
+  color: #e3467fc9;
+}
+.footer-social .facebook{
+  color: #1499F4;
+}
+.footer-social .whatsap{
+  color: #08C608;
 }
 
 .footer-social a:hover {
-  background: var(--color-primary);
-  color: var(--color-white);
+  background: var(--color-dark);
 }
 
 .footer-social svg { width: 16px; height: 16px; }
