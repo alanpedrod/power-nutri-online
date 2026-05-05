@@ -368,6 +368,10 @@ body { padding-top: 116px; }
   justify-content: center;
   transition: background var(--transition), color var(--transition);
 }
+.footer-social a svg{
+  width: 20px !important;
+  height: 20px !important;
+}
 .footer-social .instagram{
   color: #e3467fc9;
 }
@@ -376,6 +380,9 @@ body { padding-top: 116px; }
 }
 .footer-social .whatsap{
   color: #08C608;
+}
+.footer-social .whatsap i{
+  font-size: 20px;
 }
 
 .footer-social a:hover {
