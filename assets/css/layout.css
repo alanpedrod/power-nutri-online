@@ -353,7 +353,7 @@ body { padding-top: 116px; }
 
 .footer-social {
   display: flex;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   margin-top: var(--space-md);
 }
 
@@ -369,20 +369,20 @@ body { padding-top: 116px; }
   transition: background var(--transition), color var(--transition);
 }
 .footer-social a svg{
-  width: 20px !important;
-  height: 20px !important;
+  width: 22px !important;
+  height: 22px !important;
 }
 .footer-social .instagram{
   color: #e3467fc9;
 }
 .footer-social .facebook{
-  color: #1499F4;
+  color: #0c7fcdd2;
 }
 .footer-social .whatsap{
   color: #08C608;
 }
 .footer-social .whatsap i{
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .footer-social a:hover {
